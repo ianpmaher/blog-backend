@@ -28,6 +28,38 @@ function App() {
         }
     }; // get Blogs
 
+    // ==================== //
+    // handle form submission function //
+    const handleFormSubmission = async (data, type) => {
+        // if there is an id, we are EDITING
+        // if there is NO id, we are creating 
+        if (type === "new") {
+            // if new, we are creating a resource
+            const response = await fetch(`${apiURL}/blogs/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            getBlogs();
+        } else {
+            // if NOT new, we are editing // EDIT FETCH
+            const response = await fetch(`${apiURL}/blogs/${data.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            getBlogs();
+            // we will need to pass the id of the post we are editing
+            // we will need to pass the data we are editing
+            // we will need to specify the method as a PUT request
+        }
+    }
+
+    // ==================== //
     // useEffect
     useEffect(() => {
         getBlogs();
