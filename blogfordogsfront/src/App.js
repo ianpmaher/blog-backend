@@ -3,6 +3,7 @@ import "./App.css";
 import AllBlogs from "./pages/AllBlogs";
 import SingleBlog from "./pages/SingleBlog";
 import Form from "./pages/Form";
+import Header from "./components/Header";
 
 // import hooks
 import { useState, useEffect } from "react";
@@ -83,7 +84,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Blog for DOGS</h1>
+            <Header />
             <Routes>
                 <Route exact path="/" element={<AllBlogs blogs={blogs} deleteBlog={deleteBlog} />} />
                 {/* for the post/id show route, we would need to use useParams to specify which post */}
