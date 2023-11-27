@@ -12,9 +12,9 @@ const SingleBlog = ({ blogs }) => {
             <Link to="/">Back to all blogs</Link>
             <h1>{currentBlog.title}</h1>
             <h2>{currentBlog.body}</h2>
-            {/* <Link to = {`/edit/${currentBlog.id}`}>
+            <Link to = {`/edit/${currentBlog.id}`}>
                 <button>Edit Blog</button>
-            </Link> */}
+            </Link>
             <Link to="/">
                 <button>Back</button>
             </Link>

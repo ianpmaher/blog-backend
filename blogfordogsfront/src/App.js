@@ -2,6 +2,7 @@ import "./App.css";
 // import components
 import AllBlogs from "./pages/AllBlogs";
 import SingleBlog from "./pages/SingleBlog";
+import Form from "./pages/Form";
 
 // import hooks
 import { useState, useEffect } from "react";
@@ -34,6 +35,7 @@ function App() {
         // if there is an id, we are EDITING
         // if there is NO id, we are creating 
         if (type === "new") {
+            console.log("new blog form")
             // if new, we are creating a resource
             const response = await fetch(`${apiURL}/blogs/`, {
                 method: "POST",
@@ -44,8 +46,9 @@ function App() {
             });
             getBlogs();
         } else {
+            console.log("edit blog form")
             // if NOT new, we are editing // EDIT FETCH
-            const response = await fetch(`${apiURL}/blogs/${data.id}`, {
+            const response = await fetch(`${apiURL}/blogs/${data.id}/`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -73,6 +76,30 @@ function App() {
                 {/* for the post/id show route, we would need to use useParams to specify which post */}
                 <Route exact path="/blogs/:id" element={<SingleBlog blogs={blogs} />} />
                 {/* <Route exact path="/edit/:id" element={<h1>Edit Blog</h1>} /> */}
+                <Route 
+                    exact
+                    path="/new"
+                    element={
+                        <Form
+                            blogs={blogs}
+                            formType="new"
+                            handleFormSubmission={handleFormSubmission}
+                            buttonLabel="Create Blog"
+                        />
+                    }
+                />
+                <Route 
+                    exact
+                    path="/edit/:id"
+                    element={
+                        <Form
+                            blogs={blogs}
+                            formType="edit"
+                            handleFormSubmission={handleFormSubmission}
+                            buttonLabel="Edit Blog"
+                        />
+                    }
+                />
             </Routes>
         </div>
     );

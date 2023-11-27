@@ -13,13 +13,13 @@ const Form = (props) => {
 
     const [formData, setFormData] = useState(
         props.formType === "new" ? {
-            subject: "",
-            details: "",
+            title: "",
+            body: "",
         // ELSE STATEMENT
         // if form type is "edit" basically
         } : {
-            subject: currentBlog.subject,
-            details: currentBlog.details,
+            title: currentBlog.title,
+            body: currentBlog.body,
             id: parseInt(currentBlog.id)
         }
     );
@@ -50,14 +50,14 @@ const Form = (props) => {
             <input 
                 type="text"
                 name="title"
-                value={formData.subject}
+                value={formData.title}
                 onChange={handleChange}
             />
             <h3>Details</h3>
             <input 
                 type="text"
                 name="body"
-                value={formData.details}
+                value={formData.body}
                 onChange={handleChange}
             />
             <input type="submit" value={props.buttonLabel} />
