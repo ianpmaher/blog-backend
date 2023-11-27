@@ -62,6 +62,19 @@ function App() {
         }
     }
 
+    const deleteBlog = async (id) => {
+        // DELETE route
+        const response = await fetch(`${apiURL}/blogs/${id}/`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        getBlogs();
+        // we will need to pass the id of the post we are deleting
+        // we will need to specify the method as a DELETE request
+    }
+
     // ==================== //
     // useEffect
     useEffect(() => {
@@ -72,7 +85,7 @@ function App() {
         <div className="App">
             <h1>Blog for DOGS</h1>
             <Routes>
-                <Route exact path="/" element={<AllBlogs blogs={blogs} />} />
+                <Route exact path="/" element={<AllBlogs blogs={blogs} deleteBlog={deleteBlog} />} />
                 {/* for the post/id show route, we would need to use useParams to specify which post */}
                 <Route exact path="/blogs/:id" element={<SingleBlog blogs={blogs} />} />
                 {/* <Route exact path="/edit/:id" element={<h1>Edit Blog</h1>} /> */}

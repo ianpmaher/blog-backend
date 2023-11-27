@@ -16,9 +16,9 @@ const Blog = ({ blog, deleteBlog }) => {
                 <h1>{blog.title}</h1>
             </Link>
             <h2>{blog.body}</h2>
-            {/* <form onSubmit={handleDelete}>
+            <form onSubmit={handleDelete}>
                 <input type="submit" value="Delete Blog" />
-            </form> */}
+            </form>
         </div>
     );
 };
