@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const SingleBlog = ({ blogs }) => {
-    const { params } = useParams();
+    const params = useParams();
 
     // track the ID of which blog we are viewing/editing
     const currentBlog = useMemo(() => blogs.find((blog) => blog.id === parseInt(params.id)), [params.id, blogs]);
